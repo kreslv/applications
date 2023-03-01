@@ -4,8 +4,8 @@ metadata:
   creationTimestamp: null
   labels:
     infinity.application/applicationName: qa1-test
-    infinity.application/deploymentNo: qa1-test-DP1
-    infinity.application/revision: 2023.03.1
+    infinity.application/deploymentNo: qa1-test-DP2
+    infinity.application/revision: 2023.03.2
   name: qa1-test
   namespace: qa1
 spec:
