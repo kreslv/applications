@@ -1,0 +1,33 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  creationTimestamp: null
+  labels:
+    infinity.application/applicationName: qa1-test
+    infinity.application/deploymentNo: qa1-test-DP1
+    infinity.application/revision: 2023.03.1
+  name: qa1-test
+  namespace: qa1
+spec:
+  components:
+  - name: qa1-test-web-web
+    properties:
+      addRevisionLabel: false
+      exposeType: ClusterIP
+      image: nginx
+    type: webservice
+  policies:
+  - name: topology-clusters
+    properties:
+      clusters:
+      - eks
+    type: topology
+  workflow:
+    steps:
+    - name: deploy
+      properties:
+        ignoreTerraformComponent: false
+        policies:
+        - topology-clusters
+      type: deploy
+status: {}
