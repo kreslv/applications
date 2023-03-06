@@ -23,6 +23,8 @@ spec:
   workflow:
     steps:
     - name: deploy
+      properties:
+        ignoreTerraformComponent: false
         policies:
         - topology-clusters
       type: deploy
