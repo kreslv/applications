@@ -2,10 +2,10 @@ apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
   annotations:
-    application.deploy.reform/commitHash: 68b6671824743cd5fb8d92cd0828f5433ef3ed1c
-    application.deploy.reform/deploymentNo: web-uat-DP1
+    application.deploy.reform/commitHash: 0bc87b0d4840aa1258c1c3ad1fcd85a7624c0bd3
+    application.deploy.reform/deploymentNo: web-uat-DP3
     application.deploy.reform/name: web-uat
-    application.deploy.reform/revision: 2023.03.1
+    application.deploy.reform/revision: 2023.03.3
     deploy.reform/domain: reslv.io
     deploy.reform/version: a463dd478a21f2dc41a8ad45a1a54019222c6b94
   creationTimestamp: null
@@ -13,7 +13,9 @@ metadata:
   namespace: uat
 spec:
   components:
-  - name: web-uat-web-web
+  - dependsOn:
+    - web-uat-s3-infrastructure
+    name: web-uat-web-web
     properties:
       addRevisionLabel: false
       cpu: "0.1"
@@ -26,6 +28,14 @@ spec:
         port: 80
         protocol: TCP
     type: webservice
+  - name: web-uat-s3-infrastructure
+    properties:
+      accesslevel: private
+      credentialRef: aws-creationals
+      name: s3-543656
+      ociPackageName: aws-package
+      workspace: default
+    type: wv-aws-s3
   policies:
   - name: topology-clusters
     properties:
