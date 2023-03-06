@@ -1,0 +1,38 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  annotations:
+    application.deploy.reform/commitHash: 9d55209675d39571fe47894d18ecfceb1686199c
+    application.deploy.reform/deploymentNo: s3-uat-DP1
+    application.deploy.reform/name: s3-uat
+    application.deploy.reform/revision: 2023.03.1
+    deploy.reform/domain: reslv.io
+    deploy.reform/version: a463dd478a21f2dc41a8ad45a1a54019222c6b94
+  creationTimestamp: null
+  name: s3-uat
+  namespace: uat
+spec:
+  components:
+  - name: s3-uat-s3-infrastructure
+    properties:
+      accesslevel: private
+      credentialRef: aws-credentials
+      name: s3-086894234
+      ociPackageName: aws-package
+      workspace: default
+    type: wv-aws-s3
+  policies:
+  - name: topology-clusters
+    properties:
+      clusters:
+      - local
+    type: topology
+  workflow:
+    steps:
+    - name: deploy
+      properties:
+        ignoreTerraformComponent: false
+        policies:
+        - topology-clusters
+      type: deploy
+status: {}
