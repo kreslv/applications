@@ -1,0 +1,31 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  creationTimestamp: null
+  name: s3
+  namespace: uat
+spec:
+  components:
+  - name: s3-s3-infrastructure
+    properties:
+      accesslevel: private
+      credentialRef: aws
+      name: s3-fdfstert
+      ociPackageName: aws-package
+      workspace: default
+    type: wv-aws-s3
+  policies:
+  - name: topology-clusters
+    properties:
+      clusters:
+      - local
+    type: topology
+  workflow:
+    steps:
+    - name: deploy
+      properties:
+        ignoreTerraformComponent: false
+        policies:
+        - topology-clusters
+      type: deploy
+status: {}
