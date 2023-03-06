@@ -2,10 +2,10 @@ apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
   annotations:
-    application.deploy.reform/commitHash: 9d55209675d39571fe47894d18ecfceb1686199c
-    application.deploy.reform/deploymentNo: s3-uat-DP1
+    application.deploy.reform/commitHash: 752e77277e2edf249e0a4bf5fad57418a199b54f
+    application.deploy.reform/deploymentNo: s3-uat-DP2
     application.deploy.reform/name: s3-uat
-    application.deploy.reform/revision: 2023.03.1
+    application.deploy.reform/revision: 2023.03.2
     deploy.reform/domain: reslv.io
     deploy.reform/version: a463dd478a21f2dc41a8ad45a1a54019222c6b94
   creationTimestamp: null
