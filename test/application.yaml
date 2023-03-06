@@ -1,0 +1,38 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  annotations:
+    application.deploy.reform/commitHash: 59a25a5a325b6f24ed704bfe774ba8770669321a
+    application.deploy.reform/deploymentNo: s3-test-DP1
+    application.deploy.reform/name: s3-test
+    application.deploy.reform/revision: 2023.03.1
+    deploy.reform/domain: reslv.io
+    deploy.reform/version: a463dd478a21f2dc41a8ad45a1a54019222c6b94
+  creationTimestamp: null
+  name: s3-test
+  namespace: uat
+spec:
+  components:
+  - name: s3-test-s3-infrastructure
+    properties:
+      accesslevel: private
+      credentialRef: aws
+      name: s3-tyrrt-test
+      ociPackageName: aws-package
+      workspace: default
+    type: wv-aws-s3
+  policies:
+  - name: topology-clusters
+    properties:
+      clusters:
+      - local
+    type: topology
+  workflow:
+    steps:
+    - name: deploy
+      properties:
+        ignoreTerraformComponent: false
+        policies:
+        - topology-clusters
+      type: deploy
+status: {}
