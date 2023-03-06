@@ -6,7 +6,9 @@ metadata:
   namespace: uat
 spec:
   components:
-  - name: web-uat-web-web
+  - dependsOn:
+    - web-uat-s3-infrastructure
+    name: web-uat-web-web
     properties:
       addRevisionLabel: false
       cpu: "0.1"
@@ -19,6 +21,14 @@ spec:
         port: 80
         protocol: TCP
     type: webservice
+  - name: web-uat-s3-infrastructure
+    properties:
+      accesslevel: private
+      credentialRef: aws-creationals
+      name: s3-543656
+      ociPackageName: aws-package
+      workspace: default
+    type: wv-aws-s3
   policies:
   - name: topology-clusters
     properties:
