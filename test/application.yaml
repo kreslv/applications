@@ -9,7 +9,7 @@ spec:
   - name: s3-test-s3-infrastructure
     properties:
       accesslevel: private
-      credentialRef: aws
+      credentialRef: aws-credential
       name: s3-tyrrt-test
       ociPackageName: aws-package
       workspace: default
