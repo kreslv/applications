@@ -1,0 +1,43 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  annotations:
+    application.deploy.reform/commitHash: 7fa1f382315ccace7322e099bcea62d627956fe5
+    application.deploy.reform/deploymentNo: web-1-DP1
+    application.deploy.reform/name: web-1
+    application.deploy.reform/revision: 2023.03.1
+    deploy.reform/domain: reslv.io
+    deploy.reform/version: a463dd478a21f2dc41a8ad45a1a54019222c6b94
+  creationTimestamp: null
+  name: web-1
+  namespace: uat
+spec:
+  components:
+  - name: web-1-web-web
+    properties:
+      addRevisionLabel: false
+      cpu: "0.01"
+      exposeType: ClusterIP
+      image: nginx
+      imagePullPolicy: IfNotPresent
+      memory: 10Mi
+      ports:
+      - expose: true
+        port: 80
+        protocol: TCP
+    type: webservice
+  policies:
+  - name: topology-clusters
+    properties:
+      clusters:
+      - local
+    type: topology
+  workflow:
+    steps:
+    - name: deploy
+      properties:
+        ignoreTerraformComponent: false
+        policies:
+        - topology-clusters
+      type: deploy
+status: {}
