@@ -1,0 +1,41 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  annotations:
+    application.deploy.reform/commitHash: 1063b25180a013bcebf781ba3be5b83181903d2b
+    application.deploy.reform/deploymentNo: app2-qa1-DP1
+    application.deploy.reform/name: app2-qa1
+    application.deploy.reform/revision: 2023.03.1
+    deploy.reform/domain: reslv.io
+    deploy.reform/version: a463dd478a21f2dc41a8ad45a1a54019222c6b94
+  creationTimestamp: null
+  name: app2-qa1
+  namespace: qa1
+spec:
+  components:
+  - name: app2-qa1-helm-k8s
+    properties:
+      chart: hello-world
+      installTimeout: 10m
+      interval: 30s
+      pullInterval: 5m
+      repoType: helm
+      retries: 3
+      url: https://helm.github.io/examples
+      version: '*'
+    type: helm
+  policies:
+  - name: topology-clusters
+    properties:
+      clusters:
+      - eks
+    type: topology
+  workflow:
+    steps:
+    - name: deploy
+      properties:
+        ignoreTerraformComponent: false
+        policies:
+        - topology-clusters
+      type: deploy
+status: {}
