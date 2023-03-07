@@ -1,0 +1,43 @@
+apiVersion: core.oam.dev/v1beta1
+kind: Application
+metadata:
+  annotations:
+    application.deploy.reform/commitHash: 568480f32167816caf3c7c3c3bf5f21bad825c8b
+    application.deploy.reform/deploymentNo: app3-qa1-DP1
+    application.deploy.reform/name: app3-qa1
+    application.deploy.reform/revision: 2023.03.1
+    deploy.reform/domain: reslv.io
+    deploy.reform/version: 0097783ed74f5da93882ee8ede14514a0e15df11
+  creationTimestamp: null
+  name: app3-qa1
+  namespace: qa1
+spec:
+  components:
+  - name: app3-qa1-nginx-web
+    properties:
+      addRevisionLabel: false
+      cpu: "0.1"
+      exposeType: ClusterIP
+      image: nginx
+      imagePullPolicy: IfNotPresent
+      memory: 50Mi
+      ports:
+      - expose: true
+        port: 80
+        protocol: TCP
+    type: webservice
+  policies:
+  - name: topology-clusters
+    properties:
+      clusters:
+      - eks
+    type: topology
+  workflow:
+    steps:
+    - name: deploy
+      properties:
+        ignoreTerraformComponent: false
+        policies:
+        - topology-clusters
+      type: deploy
+status: {}
