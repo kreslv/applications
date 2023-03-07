@@ -2,10 +2,10 @@ apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
   annotations:
-    application.deploy.reform/commitHash: 2455517d6508f4912541f4358ba10258e06880d3
-    application.deploy.reform/deploymentNo: web-uat-DP4
+    application.deploy.reform/commitHash: 41f4a9a97fac131bf10ee77f6ab9104b47b3adfe
+    application.deploy.reform/deploymentNo: web-uat-DP5
     application.deploy.reform/name: web-uat
-    application.deploy.reform/revision: 2023.03.4
+    application.deploy.reform/revision: 2023.03.5
     deploy.reform/domain: reslv.io
     deploy.reform/version: a463dd478a21f2dc41a8ad45a1a54019222c6b94
   creationTimestamp: null
