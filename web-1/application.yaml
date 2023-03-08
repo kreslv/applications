@@ -2,12 +2,15 @@ apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
   annotations:
-    application.deploy.reform/commitHash: 7fa1f382315ccace7322e099bcea62d627956fe5
-    application.deploy.reform/deploymentNo: web-1-DP1
+    application.deploy.reform/commitHash: 67514a3afedd7e9c1436c888f09dedba9c5f1e74
+    application.deploy.reform/deploymentNo: web-1-DP2
+    application.deploy.reform/environment: uat
     application.deploy.reform/name: web-1
-    application.deploy.reform/revision: 2023.03.1
+    application.deploy.reform/repository: https://github.com/kreslv/applications.git
+    application.deploy.reform/repositoryPath: web-1
+    application.deploy.reform/revision: 2023.03.2
     deploy.reform/domain: reslv.io
-    deploy.reform/version: a463dd478a21f2dc41a8ad45a1a54019222c6b94
+    deploy.reform/version: e032374119aa1b3541b2317a59a46715620086c9
   creationTimestamp: null
   name: web-1
   namespace: uat
@@ -16,7 +19,7 @@ spec:
   - name: web-1-web-web
     properties:
       addRevisionLabel: false
-      cpu: "0.01"
+      cpu: "5"
       exposeType: ClusterIP
       image: nginx
       imagePullPolicy: IfNotPresent
