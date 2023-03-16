@@ -9,7 +9,7 @@ spec:
   - name: web-1-web-web
     properties:
       addRevisionLabel: false
-      cpu: "5"
+      cpu: "0.2"
       exposeType: ClusterIP
       image: nginx
       imagePullPolicy: IfNotPresent
