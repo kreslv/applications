@@ -2,13 +2,13 @@ apiVersion: core.oam.dev/v1beta1
 kind: Application
 metadata:
   annotations:
-    application.deploy.reform/commitHash: 3538e6d4eedda961311eef966e7281ffdd8273e9
-    application.deploy.reform/deploymentNo: app2-qa1-DP2
+    application.deploy.reform/commitHash: 411b8abe1a5c2b232b2ec8c30f17f139c3d1b972
+    application.deploy.reform/deploymentNo: app2-qa1-DP3
     application.deploy.reform/environment: qa1
     application.deploy.reform/name: app2-qa1
     application.deploy.reform/repository: https://github.com/kreslv/applications.git
     application.deploy.reform/repositoryPath: app2-qa1
-    application.deploy.reform/revision: 2023.03.2
+    application.deploy.reform/revision: 2023.03.3
     deploy.reform/domain: reslv.io
     deploy.reform/version: e032374119aa1b3541b2317a59a46715620086c9
   creationTimestamp: null
